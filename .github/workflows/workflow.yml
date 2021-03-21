@@ -16,20 +16,20 @@ jobs:
 
         - uses: azure/docker-login@v1
           with:
-            login-server: contoso.azurecr.io
+            login-server: gruffazuretest.azurecr.io
             username: ${{ secrets.REGISTRY_USERNAME }}
             password: ${{ secrets.REGISTRY_PASSWORD }}
         - run: |
-            docker build .t contoso.azurecr.io/gruffazuretest:${{ github.sha }}
-            docker push contoso.azurecr.io/gruffazuretest:${{ github.sha }}
+            docker build .t gruffazuretest.azurecr.io/backend-api:${{ github.sha }}
+            docker push gruffazuretest.azurecr.io/backend-api:${{ github.sha }}
 
         - name: 'Deploy to Azure Container Instances'
           uses: 'azure/aci-deploy@v1'
           with:
-            resource-group: contoso
+            resource-group: azure-test
             dns-name-label: grufftech-azure-test
-            image: contoso.azurecr.io/gruffazuretest:${{ github.sha }}
+            image: gruffazuretest.azurecr.io/backend-api:${{ github.sha }}
             registry-username: ${{ secrets.REGISTRY_USERNAME }}
             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-            name: contoso-container
+            name: gruffazuretest-container
             location: 'west us'
