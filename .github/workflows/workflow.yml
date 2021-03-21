@@ -20,7 +20,7 @@ jobs:
             username: ${{ secrets.REGISTRY_USERNAME }}
             password: ${{ secrets.REGISTRY_PASSWORD }}
         - run: |
-            docker build .t gruffazuretest.azurecr.io/backend-api:${{ github.sha }}
+            docker build . -t gruffazuretest.azurecr.io/backend-api:${{ github.sha }}
             docker push gruffazuretest.azurecr.io/backend-api:${{ github.sha }}
 
         - name: 'Deploy to Azure Container Instances'
