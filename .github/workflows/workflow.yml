@@ -31,9 +31,9 @@ jobs:
         - name: 'Deploy to Azure Container Instances'
           uses: 'azure/aci-deploy@v1'
           with:
-            name: backend-${{ steps.extract_branch.outputs.branch }}
-            dns-name-label: gruff-azure-${{ steps.extract_branch.outputs.branch }}
             resource-group: ${{ secrets.RESOURCE_GROUP }}
+            name: ${{ steps.extract_branch.outputs.branch }}
+            dns-name-label: gruff-azure-${{ steps.extract_branch.outputs.branch }}
             image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/backend-api:${{ steps.extract_branch.outputs.branch }}-${{ github.sha }}
             registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
             registry-username: ${{ secrets.REGISTRY_USERNAME }}
