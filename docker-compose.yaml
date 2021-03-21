@@ -7,7 +7,7 @@ services:
     environment:
       ALLOW_EMPTY_PASSWORD: "yes"
 
-  backend-api:
+  main:
     build: .
     image: tiangolo/uvicorn-gunicorn-fastapi:python3.7
     container_name: backend-api
@@ -16,14 +16,3 @@ services:
       REDIS: redis
     ports:
         - "80:80"
-    deploy:
-      resources:
-        reservations:
-          cpus: '1.5'
-          memory: 1.5G
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
