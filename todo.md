@@ -1,5 +1,3 @@
 # azure containers skeleton
 
-- azure container infrastructure
-- azure ml ops
-- github actions updating stack
+- workflow file for spinning down branches after they've been merged or deleted.
