@@ -20,15 +20,15 @@ jobs:
             username: ${{ secrets.REGISTRY_USERNAME }}
             password: ${{ secrets.REGISTRY_PASSWORD }}
         - run: |
-            docker build .t contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
-            docker push contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
+            docker build .t contoso.azurecr.io/gruffazuretest:${{ github.sha }}
+            docker push contoso.azurecr.io/gruffazuretest:${{ github.sha }}
 
         - name: 'Deploy to Azure Container Instances'
           uses: 'azure/aci-deploy@v1'
           with:
             resource-group: contoso
             dns-name-label: grufftech-azure-test
-            image: contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
+            image: contoso.azurecr.io/gruffazuretest:${{ github.sha }}
             registry-username: ${{ secrets.REGISTRY_USERNAME }}
             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
             name: contoso-container
