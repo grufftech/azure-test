@@ -21,7 +21,7 @@ jobs:
 
         - uses: azure/docker-login@v1
           with:
-            login-server: gruffazuretest.azurecr.io
+            login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
             username: ${{ secrets.REGISTRY_USERNAME }}
             password: ${{ secrets.REGISTRY_PASSWORD }}
         - run: |
