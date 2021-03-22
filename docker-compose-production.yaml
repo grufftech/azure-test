@@ -11,7 +11,7 @@ services:
     build: .
     image: tiangolo/uvicorn-gunicorn-fastapi:python3.7
     container_name: backend-api
-    domainname: gruff-newbranch-backend
+    domainname: gruff-production
     environment:
       REDIS: redis
     ports:
